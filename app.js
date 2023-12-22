@@ -14,16 +14,17 @@ let btn4 = document.getElementById("btn4");
 let btn5 = document.getElementById("btn5");
 let btn6 = document.getElementById("btn6");
 
-btn1.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("¡Has seleccionado el producto 1!");
-		item = "1";
-		tg.MainButton.show();
-	}
+
+btn1.addEventListener("click", function () {
+    if (tg.MainButton.isVisible) {
+        tg.MainButton.hide();
+    } else {
+        tg.MainButton.setText("¡Has seleccionado el producto 1!");
+        item = "1";
+        tg.MainButton.show();
+    }
 });
+
 
 btn2.addEventListener("click", function(){
 	if (tg.MainButton.isVisible) {
@@ -80,9 +81,8 @@ btn6.addEventListener("click", function(){
 	}
 });
 
-
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(item);
+Telegram.WebApp.onEvent("mainButtonClicked", function () {
+    tg.sendData(item);
 });
 
 let usercard = document.getElementById("usercard");
@@ -96,6 +96,17 @@ if (tg.initDataUnsafe.user && tg.initDataUnsafe.user.first_name) {
 }
 
 usercard.appendChild(p);
+
+
+let dictEmpresaList = document.getElementById("dictEmpresaList");
+for (const value of Object.values(dictEmpresa)) {
+    let listItem = document.createElement("li");
+    listItem.innerText = value;
+    dictEmpresaList.appendChild(listItem);
+}
+
+
+
 
 
 
